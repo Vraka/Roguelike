@@ -7,15 +7,20 @@ public class PlayerMovement : MonoBehaviour {
     public float speed;
     private Vector2 dir;
     private Animator animator;
+    public bool canMove;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        canMove = true;
     }
 
 	void Update () {
-        TakeInput();
-        Move();
+        if(canMove)
+        {
+            TakeInput();
+            Move();
+        }
 	}
 
     private void TakeInput()

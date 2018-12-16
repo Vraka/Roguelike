@@ -9,16 +9,30 @@ public class TestEnemySpell : MonoBehaviour {
     public float damage;
     public float force;
     public float cooldown;
+    public bool isAggro;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine(Shoot());
+    }
+
+    public void setAggro(bool aggro)
+    {
+        if (aggro && !isAggro)
+        {
+            StartCoroutine(Shoot());
+        } else if(!aggro && isAggro)
+        {
+            StopCoroutine(Shoot());
+        }
+        isAggro = aggro;
     }
 
     IEnumerator Shoot()
     {
         yield return new WaitForSeconds(cooldown);
-        if(player != null) {
+        if(player != null && isAggro) {
             GameObject spell = Instantiate(projectile, transform.position, Quaternion.identity);
             Vector2 dir = (Vector2)(player.position - transform.position).normalized;
             spell.GetComponent<Rigidbody2D>().velocity = dir * force;

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 61822843143857582}
   - component: {fileID: 114330608558431274}
   - component: {fileID: 114903127067554052}
+  - component: {fileID: 114106024157287476}
   m_Layer: 0
   m_Name: Test Enemy
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1901427248439276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.31, y: 0, z: 0}
+  m_LocalPosition: {x: 8.31, y: 8, z: 0}
   m_LocalScale: {x: 2.0440474, y: 2.0440488, z: 2.0440488}
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,6 +87,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114106024157287476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901427248439276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d59156000ee334f8c76037ff7aafaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aggro_dist: 5
+  stop_dist: 3
+  speed: 1
+  spell: {fileID: 114903127067554052}
 --- !u!114 &114330608558431274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,6 +131,7 @@ MonoBehaviour:
   damage: 5
   force: 5
   cooldown: 4
+  isAggro: 0
 --- !u!212 &212921875812421824
 SpriteRenderer:
   m_ObjectHideFlags: 1

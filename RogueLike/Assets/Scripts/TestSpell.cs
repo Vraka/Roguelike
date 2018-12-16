@@ -5,9 +5,9 @@ using UnityEngine;
 public class TestSpell : MonoBehaviour {
 
     public GameObject projectile;
-    public float damage;
-    public float force;
-    public float delay;
+    public float damage = 20;
+    public float force = 10;
+    public float delay = 40;
     private float timer;
 
     void Start()

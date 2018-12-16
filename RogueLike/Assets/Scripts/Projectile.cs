@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject != origin && collision.tag != "projectile")
+        if(collision.gameObject != origin && collision.tag != "projectile" && collision.tag != "SpawnPoint" && collision.tag != "EntrySpawn")
         {
             if(collision.tag == "Player" && PlayerStats.instance != null)
             {

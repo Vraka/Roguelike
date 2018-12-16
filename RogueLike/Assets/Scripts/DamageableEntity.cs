@@ -6,6 +6,7 @@ public class DamageableEntity : MonoBehaviour {
 
     public float health;
     public float maxHealth;
+    public SpawnEnemy spawnlist;
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +37,10 @@ public class DamageableEntity : MonoBehaviour {
     {
         if(health <= 0)
         {
+            if(spawnlist != null)
+            {
+                spawnlist.Kill(this);
+            }
             Destroy(gameObject);
         }
     }
