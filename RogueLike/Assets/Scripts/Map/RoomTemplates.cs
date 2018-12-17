@@ -26,6 +26,7 @@ public class RoomTemplates : MonoBehaviour {
     public List<RoomSpawner> finalSpawns;
 
     public float waitTime = 2;
+    private bool spawnedRooms = false;
     private bool spawnedBoss = false;
     public GameObject boss;
 
@@ -35,12 +36,11 @@ public class RoomTemplates : MonoBehaviour {
         {
             Invoke("Spawn", 0.1f);
         }
-        if (waitTime <= 0 && roomSpawns.Count == 0 && !spawnedBoss)
+        if (waitTime <= 0 && roomSpawns.Count == 0 && !spawnedRooms)
         {
             foreach(RoomSpawner spawner in finalSpawns)
             {
-                Instantiate(boss, finalSpawns[finalSpawns.Count - 1].transform.position, Quaternion.identity);
-                spawnedBoss = true;
+                
                 string prefabname = "";
                 if(spawner.doors[1])
                 {
@@ -61,11 +61,24 @@ public class RoomTemplates : MonoBehaviour {
 
                 Instantiate(Resources.Load("Rooms/" + prefabname), spawner.gameObject.transform.position, Quaternion.identity);
             }
-            spawnedBoss = true;
-            waitTime = 1f;
+            spawnedRooms = true;
         } else
         {
             waitTime -= Time.deltaTime;
+        }
+
+        if (spawnedRooms && !spawnedBoss && rooms.Count == finalSpawns.Count + 1) 
+        {
+            for(int i = rooms.Count - 1; i >= 0; i--)
+            {
+                if(rooms[i].gameObject.transform.parent.name.Length == 8)
+                {
+                    //Instantiate(boss, rooms[rooms.Count - 1].transform.position, Quaternion.identity);
+                    rooms[rooms.Count - 1].type = "boss";
+                    spawnedBoss = true;
+                    break;
+                }
+            }
         }
 
     }

@@ -13,6 +13,7 @@ public class RoomSpawner : MonoBehaviour {
     private RoomTemplates templates;
     private int rand;
     private bool spawned = false;
+    public string type = "normal";
 
 	// Use this for initialization
 	void Start () {
@@ -95,7 +96,7 @@ public class RoomSpawner : MonoBehaviour {
                     }
                 }
             }
-            Debug.Log("Enter " + transform.position.x + ", " + transform.position.y + ": " + doors[0] + "," + doors[1] + "," + doors[2] + "," + doors[3]);
+            //Debug.Log("Enter " + transform.position.x + ", " + transform.position.y + ": " + doors[0] + "," + doors[1] + "," + doors[2] + "," + doors[3]);
             Destroy(gameObject);
         }
     }
@@ -128,7 +129,7 @@ public class RoomSpawner : MonoBehaviour {
                     }
                 }
             }
-            Debug.Log(transform.position.x + ", " + transform.position.y + ": " + doors[0] + "," + doors[1] + "," + doors[2] + "," + doors[3]);
+            //Debug.Log(transform.position.x + ", " + transform.position.y + ": " + doors[0] + "," + doors[1] + "," + doors[2] + "," + doors[3]);
             Destroy(gameObject);
         }
     }

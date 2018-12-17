@@ -12,19 +12,19 @@ public class TestEnemyMovement : MonoBehaviour {
 
     public TestEnemySpell spell;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         animator = GetComponent<Animator>();
 
         spell = gameObject.GetComponent<TestEnemySpell>();
         spell.enabled = false;
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+    }
+
+    // Update is called once per frame
+    void FixedUpdate() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         float dist = Vector2.Distance(player.transform.position, transform.position);
-        if (dist < aggro_dist)
+        if (dist < aggro_dist || aggro_dist == -1)
         {
             spell.setAggro(true);
             if(dist > stop_dist)

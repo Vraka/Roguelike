@@ -9,8 +9,8 @@ public class RoomInfo : MonoBehaviour {
     public bool cleared = false;
     public SpawnEnemy spawner;
     public GameObject doors;
-    public int type;
     public bool[] openings;
+    public string type = "normal";
 
 	// Use this for initialization
 	void Start () {

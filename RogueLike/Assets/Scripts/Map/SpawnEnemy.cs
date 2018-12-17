@@ -12,20 +12,27 @@ public class SpawnEnemy : MonoBehaviour {
     {
         room = r;
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<EnemyTemplates>();
-        int numE = Random.Range(1, 4);
-        for (int i = 0; i < numE; i++)
+        if(r.type == "normal")
         {
-            int xOffset = Random.Range(-1, 2);
-            int yOffset = Random.Range(-1, 2);
-            int rand = Random.Range(0, templates.enemies.Length);
-            GameObject enemy = Instantiate(templates.enemies[rand], (Vector2)transform.position + new Vector2(xOffset, yOffset), Quaternion.identity);
-            DamageableEntity de = enemy.GetComponent<DamageableEntity>();
-            if (de != null)
+            int numE = Random.Range(1, 4);
+            for (int i = 0; i < numE; i++)
             {
-                de.spawnlist = this;
-                enemies.Add(de);
+                int xOffset = Random.Range(-1, 2);
+                int yOffset = Random.Range(-1, 2);
+                int rand = Random.Range(0, templates.enemies.Length);
+                GameObject enemy = Instantiate(templates.enemies[rand], (Vector2)transform.position + new Vector2(xOffset, yOffset), Quaternion.identity);
+                DamageableEntity de = enemy.GetComponent<DamageableEntity>();
+                if (de != null)
+                {
+                    de.spawnlist = this;
+                    enemies.Add(de);
+                }
             }
+        } else if(r.type == "boss")
+        {
+
         }
+       
     }
 
     public void Kill(DamageableEntity e)
